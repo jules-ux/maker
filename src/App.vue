@@ -1,47 +1,92 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <div class="parent-container">
+    <div class="topper">
+      <Top class="sticky-top" />
+      <SearchBar @update:search="updateSearchTerm" />
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+    <Tabel :search="search" />
+  </div>
 </template>
 
+
+<script>
+import Top from './components/top-section.vue';
+import Tabel from './components/PrintTable.vue';
+import SearchBar from './components/search.vue';  // Voeg de zoekbalkcomponent toe
+
+export default {
+  name: 'ParentComponent',
+  components: {
+    Top,
+    Tabel,
+    SearchBar,  // Registreer de zoekbalkcomponent
+  },
+  data() {
+    return {
+      search: '',  // Zoekterm die we naar de tabel doorgeven
+    };
+  },
+  methods: {
+    updateSearchTerm(newTerm) {
+      this.search = newTerm;  // Werk de zoekterm bij wanneer de zoekbalk verandert
+    },
+  },
+};
+</script>
+
+<style>
+html::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar */
+}
+.v-input__details {
+  display: none !important;
+}
+@media (max-width: 768px) {
+  .v-text-field>input {
+    text-align: center;
+  }
+}
+</style>
+
 <style scoped>
-header {
-  line-height: 1.5;
+.parent-container {
+  display: flex;
+  flex-direction: column;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.topper {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;  /* Centraal uitlijnen van de inhoud */
+  align-items: center;      /* Verticaal centreren */
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+  padding: 0 20px;          /* Optioneel: wat padding aan de zijkanten */
+  box-sizing: border-box;   /* Zorgt ervoor dat padding wordt meegenomen in de breedte */
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+.v-text-field {
+  width: 100%;
+  max-width: 500px;  /* Beperk de maximale breedte van de zoekbalk */
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+@media (max-width: 768px) {
+  .topper {
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* Centraal uitlijnen van de inhoud */
+  align-items: center;      /* Verticaal centreren */
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+  padding: 0 0px;          /* Optioneel: wat padding aan de zijkanten */
+  box-sizing: border-box;   /* Zorgt ervoor dat padding wordt meegenomen in de breedte */
+  margin-bottom: 10px;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
 }
 </style>
