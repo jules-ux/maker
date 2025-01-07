@@ -1,10 +1,12 @@
-import { createApp } from 'vue'
-import { createApp } from 'vue';          // Import Vue
-import { createVuetify } from 'vuetify';  // Import Vuetify
-import 'vuetify/styles'; 
-import App from './App.vue'
+import { createApp } from 'vue';  // Vue importeren
+import { createVuetify } from 'vuetify';  // Vuetify importeren
+import 'vuetify/styles';  // Vuetify stijlen importeren
+import App from './App.vue';  // Hoofdbestand van je applicatie
 
-const vuetify = createVuetify();         // Create Vuetify instance
+const app = createApp(App);  // Maak de Vue-applicatie
 
-app.use(vuetify);                        // Use Vuetify with your app
-createApp(App).mount('#app')
+const vuetify = createVuetify();  // Maak een Vuetify-instantie
+
+app.use(vuetify);  // Voeg Vuetify toe aan de app
+
+app.mount('#app');  // Mount de app op het juiste element
