@@ -13,7 +13,7 @@
                 <td>{{ item.timeprint }}</td>
                 <td>{{ item.date }}</td>
                 <td>
-                    <v-chip :color="item.status === 'Active' ? 'green' : item.status === 'Pending' ? 'orange' : 'red'"
+                    <v-chip :color="item.status === 'Active' ? 'green' : item.status === 'pending' ? 'purple' : 'red'"
                         label dark>
                         {{ item.status }}
                     </v-chip>
