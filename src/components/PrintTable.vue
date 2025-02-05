@@ -1,7 +1,7 @@
 <template>
     <v-data-table :headers="headers" :items="items" :search="search" item-value="name" class="main">
         <!-- Checkbox kolom -->
-        
+
         <template v-slot:body="{ items }">
             <tr v-for="item in items" :key="item.id">
                 <td>{{ item.namefirst }}</td>
@@ -13,9 +13,11 @@
                 <td>{{ item.timeprint }}</td>
                 <td>{{ item.date }}</td>
                 <td>
-                    <v-chip :color="item.status === 'Active' ? 'green' : 'red'" label dark>
+                    <v-chip :color="item.status === 'Active' ? 'green' : item.status === 'Pending' ? 'orange' : 'red'"
+                        label dark>
                         {{ item.status }}
                     </v-chip>
+
                 </td>
             </tr>
         </template>
@@ -112,7 +114,4 @@ body {
 .v-btn {
     margin-bottom: 16px;
 }
-
-
-
 </style>
