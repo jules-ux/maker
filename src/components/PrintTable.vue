@@ -6,7 +6,7 @@
             <tr v-for="item in items" :key="item.id">
                 <td>{{ item.namefirst }}</td>
                 <td>{{ item.namelast }}</td>
-                <td>{{ item.printer }}</td>
+                <td>{{ item.price }}</td>
                 <td>{{ item.email }}</td>
                 <td>{{ item.timestart }}</td>
                 <td>{{ item.timeend }}</td>
@@ -48,7 +48,7 @@ const search = ref('');
 const headers = ref([
     { title: 'First Name', key: 'namefirst', align: 'start' },
     { title: 'Last Name', key: 'namelast', align: 'start' },
-    { title: 'Printer', key: 'printer', align: 'start' },
+    { title: 'Price', key: 'price', align: 'start' },
     { title: 'Email', key: 'email', align: 'start' },
     { title: 'Start Time', key: 'timestart', align: 'start' },
     { title: 'End Time', key: 'timeend', align: 'start' },
